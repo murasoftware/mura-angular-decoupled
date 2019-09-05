@@ -22,8 +22,8 @@ services:
         MURA_EXTERNALCONFIG: "http://host.docker.internal:4200/assets/mura.config.json"
         MURA_DEFAULTTHEMEURL: "https://github.com/blueriver/MuraMinimal/archive/master.zip"
     volumes:
-        #-   ../../7.1/core:/var/www/core
-        #-   ../../7.1/admin:/var/www/admin
+        -   ../../7.2/core:/var/www/core
+        -   ../../7.2/admin:/var/www/admin
         -   ng_sites_data:/var/www/sites
         -   ng_themes_data:/var/www/themes
         -   ng_plugins_data:/var/www/plugins
@@ -39,7 +39,7 @@ services:
     volumes:
         - ng_mysql_data:/var/lib/mysql
     ports:
-        - "55555:3306"
+        - "55556:3306"
 
 volumes:
     ng_mysql_data:

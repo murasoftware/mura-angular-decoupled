@@ -4,7 +4,7 @@
 
 First you need to start Mura up:
 ```
-git clone https://github.com/blueriver/MuraAngularDecoupled.git
+git clone https://github.com/murasoftware/mura-angular-decoupled.git
 cd MuraAngularDecoupled
 git checkout master
 cd mura
@@ -34,7 +34,7 @@ npm install
 
 If you're on Windows you will need to edit this file to change "cp" to "copy"
 
-https://github.com/blueriver/MuraAngularDecoupled/blob/master/angular/package.json#L20
+https://github.com/murasoftware/mura-angular-decoupled/blob/master/angular/package.json#L20
 
 Then start the Angular service
 
@@ -63,33 +63,33 @@ https://docs.getmura.com/v7-1/mura-developers/mura-rendering/murajs/
 
 ## Docker Image
 
-https://hub.docker.com/r/blueriver/muracms/
+https://hub.docker.com/r/murasoftware/mura/
 
 ## Theming
 
 With this use case Mura modules, templates and content type includes are now located outside of Mura within the client.
 
-https://github.com/blueriver/MuraAngularDecoupled/tree/master/angular/src/app/contenttypes/default
-https://github.com/blueriver/MuraAngularDecoupled/tree/master/angular/src/app/templates
-https://github.com/blueriver/MuraAngularDecoupled/tree/master/angular/src/app/modules
+https://github.com/murasoftware/mura-angular-decoupled/tree/master/angular/src/app/contenttypes/default
+https://github.com/murasoftware/mura-angular-decoupled/tree/master/angular/src/app/templates
+https://github.com/murasoftware/mura-angular-decoupled/tree/master/angular/src/app/modules
 
 ## Configuring Mura Remotely
 
 There is a mura.config.json file that the Mura service reads in when loading to get what it needs to know from the client.
 
-https://github.com/blueriver/MuraAngularDecoupled/blob/master/angular/mura.config.json
+https://github.com/murasoftware/mura-angular-decoupled/blob/master/angular/mura.config.json
 
 You tell Mura about it as an environment variable
 
-https://github.com/blueriver/MuraAngularDecoupled/blob/master/mura/docker-compose.yml#L22
+https://github.com/murasoftware/mura-angular-decoupled/blob/master/mura/docker-compose.yml#L22
 
 When Angular starts up is get's copied to the public /assets Directory
 
-https://github.com/blueriver/MuraAngularDecoupled/tree/master/angular/src/assets
+https://github.com/murasoftware/mura-angular-decoupled/tree/master/angular/src/assets
 
 Mura.js is initialized from within the mura.service file that also wires in any custom modules
 
-https://github.com/blueriver/MuraAngularDecoupled/blob/master/angular/src/app/mura.service.ts
+https://github.com/murasoftware/mura-angular-decoupled/blob/master/angular/src/app/mura.service.ts
 
 ## Mura ORM Assembler and Scaffolder
 

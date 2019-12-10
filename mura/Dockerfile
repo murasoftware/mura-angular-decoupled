@@ -1,4 +1,4 @@
-FROM blueriver/muracms:7.2
+FROM murasoftware/mura:latest
 MAINTAINER Matt Levine, matt.levine@blueriver.com
 
 ARG admin_hspw=

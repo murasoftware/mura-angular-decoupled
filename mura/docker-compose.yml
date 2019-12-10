@@ -14,8 +14,8 @@ services:
         MURA_DBTYPE: mysql
         MURA_DBUSERNAME: root
         MURA_DBPASSWORD: NOT_SECURE_CHANGE
-        MURA_DBHOST: mura_mysql
-        MURA_DBPORT: 3306
+        MURA_DBCONNECTIONSTRING: "jdbc:mysql://mura_mysql:3306/muradb?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true"
+        MURA_DBCLASS: com.mysql.cj.jdbc.Driver
         MURA_SITEIDINURLS: "false"
         MURA_INDEXFILEINURLS: "false"
         MURA_ADMINDOMAIN: "localhost"
@@ -32,7 +32,7 @@ services:
 
   #MySQL
   mura_mysql:
-    image: mysql:5.7
+    image: mysql:latest
     environment:
         MYSQL_ROOT_PASSWORD: NOT_SECURE_CHANGE
         MYSQL_DATABASE: muradb

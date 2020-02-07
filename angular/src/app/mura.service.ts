@@ -20,8 +20,8 @@ export class MuraService {
 			});
 
 		Mura.loader()
-			.loadcss(Mura.corepath + '/modules/v1/core_assets/css/mura.7.1.min.css')
-			.loadcss(Mura.corepath + '/modules/v1/core_assets/css/mura.7.1.skin.css');
+			.loadcss(Mura.corepath + '/modules/v1/core_assets/css/mura.10.min.css')
+			.loadcss(Mura.corepath + '/modules/v1/core_assets/css/mura.10.skin.css');
 
 		const domServiceRef=this.domService;
 

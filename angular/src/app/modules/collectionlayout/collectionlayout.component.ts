@@ -1,5 +1,5 @@
 import {Inject, ChangeDetectorRef,Component,ElementRef} from '@angular/core';
-import { WindowRef } from '../../windowref';
+import { MuraService } from '../../mura.service';
 
 @Component({
   selector: 'collection-layout',
@@ -20,16 +20,15 @@ import { WindowRef } from '../../windowref';
 })
 
 export class CollectionLayoutComponent {
-	private context:object;
-	private collection:any;
+	context:object;
+	collection:any;
 	Mura:any
 	constructor(
 		private hostElement: ElementRef,
 		private changeDetectorRef: ChangeDetectorRef,
-		@Inject(WindowRef) private windowRef: WindowRef
+		private muraService:MuraService
 	){
 
-		this.Mura=this.windowRef.nativeWindow.Mura
 		this.context={};
 		this.collection=false;
 
@@ -68,7 +67,7 @@ export class CollectionLayoutComponent {
 	}
 
 	ngOnInit() {
-
+		this.Mura=this.muraService.getInstance();
 	}
 
 }

@@ -1,25 +1,23 @@
 import {Inject, ChangeDetectorRef,Component,ElementRef} from '@angular/core';
-import { WindowRef } from '../../windowref';
 
+import { MuraService } from '../../mura.service';
 @Component({
   selector: 'example',
   template: `
-  <h3 *ngIf="context.myvar">{{context.myvar}}</h3>
-	<h3 *ngIf="!context.myvar">Enter example variable in configurator</h3>
+  <h3 *ngIf="hasVar()">{{context.myvar}}</h3>
+	<h3 *ngIf="!hasVar()">Enter example variable in configurator</h3>
   `,
   styles: []
 })
 
 export class ExampleComponent {
-	private context:object={myvar:""};
+	context:object={myvar:""};
 	Mura:any
 	constructor(
 		private hostElement: ElementRef,
 		private changeDetectorRef: ChangeDetectorRef,
-		@Inject(WindowRef) private windowRef: WindowRef
+		private muraService:MuraService
 	){
-
-		this.Mura=this.windowRef.nativeWindow.Mura
 
 		//This is a dynamically added component that does not support Angular life cycle events
 		setTimeout(
@@ -28,6 +26,11 @@ export class ExampleComponent {
 				this.detectChanges();
 			}
 		);
+	}
+
+	hasVar(){
+		console.log(this.context);
+		return this.context;
 	}
 
 	updateContext(){
@@ -39,7 +42,7 @@ export class ExampleComponent {
 	}
 
 	ngOnInit() {
-		
+		this.Mura=this.muraService.getInstance();
 	}
 
 }

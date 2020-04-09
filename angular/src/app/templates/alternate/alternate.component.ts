@@ -32,7 +32,7 @@ export class AlternateTemplateComponent  {
 			}
 		)
 
-		this.Mura('#content-body').html(	this.content.get('body'));
+		this.Mura('#content-body').html(this.content.get('body'));
 
 		this.Mura.init(this.content.get('config'));
 

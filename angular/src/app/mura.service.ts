@@ -2,22 +2,25 @@ import { Inject, Injectable, Optional } from '@angular/core';
 import { DomService } from './dom.service';
 import { ExampleComponent } from './modules/example/example.component';
 import { CollectionLayoutComponent } from './modules/collectionlayout/collectionlayout.component';
-import Mura from 'mura.js';
+//import Mura from 'mura.js';
+//import { WindowRef } from './windowref';
+declare var Mura: any;
 
 @Injectable()
 
 export class MuraService {
-	private mura=Mura;
 	private renderedContent:any;
 
+
+	
 	constructor(@Inject(DomService) private domService) {
 
 		Mura.init({
 				rootpath:"http://localhost:8888",
 				siteid:"default",
-				queueObjects:false,
 				processMarkup:false
 			});
+
 
 		Mura.loader()
 			.loadcss(Mura.corepath + '/modules/v1/core_assets/css/mura.10.min.css')
@@ -42,10 +45,11 @@ export class MuraService {
 				component:CollectionLayoutComponent
 			});
 
+
 	}
 
 	getInstance(){
-		return this.mura;
+		return Mura;
 	}
 
 }

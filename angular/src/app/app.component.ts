@@ -1,5 +1,7 @@
 import {Component} from '@angular/core';
 
+declare var Mura: any;
+
 @Component({
   selector: 'app-root',
   template: `

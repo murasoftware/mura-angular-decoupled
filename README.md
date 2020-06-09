@@ -1,106 +1,46 @@
-# MuraAngularDecoupled
+# Angular Universal Starter
 
-## Initial Startup
+![Angular Universal](https://angular.io/assets/images/logos/concept-icons/universal.png)
 
-First you need to start Mura up:
-```
-git clone https://github.com/murasoftware/mura-angular-decoupled.git
-cd MuraAngularDecoupled
-git checkout master
-cd mura
-docker-compose up
-```
+A minimal Angular starter for Universal JavaScript using the [Angular CLI](https://github.com/angular/angular-cli)
+If you're looking for the Angular Universal repo go to [**angular/universal**](https://github.com/angular/universal)  
 
-Then go to http://localhost:8888 to initialize Mura's install then login with the default (admin/admin) and edit the default site's settings:
-* Domain= The domain of the remote site that the the content will be served on. (localhost)
-* Is Remote = true
-* Remote Context = The directory structure off of the remote site's web root that the site lives (Leave Empty)
-* Remote Port = The port of the remote site (4200)
-* Resource Domain = The domain that Mura will use the access resource like css and js scripts that are dynamically loaded. (localhost)
+## Getting Started
 
-Second you need to start Angular up:
+This demo is built following the [Angular-CLI Wiki guide](https://github.com/angular/angular-cli/wiki/stories-universal-rendering)
 
-If you haven't already install Angular CLI you will need to run This
+We're utilizing packages from the [Angular Universal @nguniversal](https://github.com/angular/universal) repo, such as [ng-module-map-ngfactory-loader](https://github.com/angular/universal/modules/module-map-ngfactory-loader) to enable Lazy Loading.
 
-```
-npm install -g @angular/cli
-```
+---
 
-Then in terminal go to the ./angular directory within the project root:
-```
-cd {project_root}/angular
-npm install
-```
+### Build Time Prerendering Vs. Server Side Rendering(ssr)
+This repo demonstrates the use of 2 different forms of Server Side Rendering.
 
-If you're on Windows you will need to edit this file to change "cp" to "copy"
+**Prerender** 
+* Happens at build time
+* Renders your application and replaces the dist index.html with a version rendered at the route `/`.
 
-https://github.com/murasoftware/mura-angular-decoupled/blob/master/angular/package.json#L20
+**Server-Side Rendering(ssr)**
+* Happens at runtime
+* Uses `ngExpressEngine` to render your application on the fly at the requested url.
 
-Then start the Angular service
+---
 
-```
-npm run start
-```
+### Installation
+* `npm install` or `yarn`
 
-You can now visit the site at http://localhost:4200
+### Development (Client-side only rendering)
+* run `npm run start` which will start `ng serve`
 
-And finally go to your Mura admin (http://localhost:8888/admin) and reload Mura one more to and it will see the mura.config.json from the ./angular directory.
+### Production (also for testing SSR/Pre-rendering locally)
+**`npm run build:ssr && npm run serve:ssr`** - Compiles your application and spins up a Node Express to serve your Universal application on `http://localhost:4000`.
 
-# Key Points of Integration with Mura
+**`npm run build:prerender && npm run serve:prerender`** - Compiles your application and prerenders your applications files, spinning up a demo http-server so you can view it on `http://localhost:8080`
+**Note**: To deploy your static site to a static hosting platform you will have to deploy the `dist/browser` folder, rather than the usual `dist`
 
-The intergration is entirely done with Mura.js installed as an npm within the and project while running Mura's official docker container.
 
-## Mura Version
+## Universal "Gotchas"
+Moved to [/angular/universal/blob/master/docs/gotchas.md](https://github.com/angular/universal/blob/master/docs/gotchas.md)
 
-You must use Mura 7.1.324 of higher
-
-## NPM
-https://www.npmjs.com/package/mura.js
-
-## Mura.js documentation
-
-https://docs.getmura.com/v7-1/mura-developers/mura-rendering/murajs/
-
-## Docker Image
-
-https://hub.docker.com/r/murasoftware/mura/
-
-## Theming
-
-With this use case Mura modules, templates and content type includes are now located outside of Mura within the client.
-
-https://github.com/murasoftware/mura-angular-decoupled/tree/master/angular/src/app/contenttypes/default
-https://github.com/murasoftware/mura-angular-decoupled/tree/master/angular/src/app/templates
-https://github.com/murasoftware/mura-angular-decoupled/tree/master/angular/src/app/modules
-
-## Configuring Mura Remotely
-
-There is a mura.config.json file that the Mura service reads in when loading to get what it needs to know from the client.
-
-https://github.com/murasoftware/mura-angular-decoupled/blob/master/angular/mura.config.json
-
-You tell Mura about it as an environment variable
-
-https://github.com/murasoftware/mura-angular-decoupled/blob/master/mura/docker-compose.yml#L22
-
-When Angular starts up is get's copied to the public /assets Directory
-
-https://github.com/murasoftware/mura-angular-decoupled/tree/master/angular/src/assets
-
-Mura.js is initialized from within the mura.service file that also wires in any custom modules
-
-https://github.com/murasoftware/mura-angular-decoupled/blob/master/angular/src/app/mura.service.ts
-
-## Mura ORM Assembler and Scaffolder
-
-An important aspect of Mura 7.1 and this new way of working with Mura is using the Mura ORM Assembler and Scaffolder to create your own custom entities.  You can then use Mura.js to seamlessly access them within your client.  It works the same way as working with normal content and feeds.
-
-https://docs.getmura.com/v7-1/mura-developers/mura-beans-objects/custom-objects/mura-orm/mura-orm-assembler-scaffolder/
-
-## Mura Module Configurator Markup Conventions
-
-https://docs.getmura.com/v7-1/mura-ui-markup-conventions/custom-module-display-object-configurators/
-
-# Key Points About Angular
-
-This demonstration project does not currently support prerendering or ssr.
+# License
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](/LICENSE)

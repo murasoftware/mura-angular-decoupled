@@ -1,0 +1,69 @@
+{
+  "name": "ng-universal-demo",
+  "version": "0.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/angular/universal-starter.git"
+  },
+  "contributors": [
+    "AngularClass <hello@angularclass.com>",
+    "PatrickJS <patrick@angularclass.com>",
+    "Jeff Whelpley <jeff@gethuman.com>",
+    "Jeff Cross <crossj@google.com>",
+    "Mark Pieszak <mpieszak84@gmail.com>",
+    "Jason Jean <jasonjean1993@gmail.com>",
+    "Fabian Wiles <fabian.wiles@gmail.com>"
+  ],
+  "scripts": {
+    "ng": "ng",
+    "start": "cp mura.config.json src/assets && ng serve --disable-host-check",
+    "build": "ng build",
+    "lint": "ng lint ng-universal-demo",
+    "build:client-and-server-bundles": "ng build --prod && ng run ng-universal-demo:server:production",
+    "build:prerender": "npm run build:client-and-server-bundles && npm run compile:server && npm run generate:prerender",
+    "build:ssr": "npm run build:client-and-server-bundles && npm run compile:server",
+    "compile:server": "tsc -p server.tsconfig.json",
+    "generate:prerender": "cd dist && node prerender",
+    "serve:prerender": "cd dist/browser && http-server",
+    "serve:ssr": "node dist/server"
+  },
+  "pre-commit": [],
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^9.1.7",
+    "@angular/common": "^9.1.7",
+    "@angular/compiler": "^9.1.7",
+    "@angular/core": "^9.1.7",
+    "@angular/forms": "^9.1.7",
+    "@angular/http": "^7.2.16",
+    "@angular/platform-browser": "^9.1.7",
+    "@angular/platform-browser-dynamic": "^9.1.7",
+    "@angular/platform-server": "^9.1.7",
+    "@angular/router": "^9.1.7",
+    "@nguniversal/common": "^9.1.1",
+    "@nguniversal/express-engine": "^9.1.1",
+    "@nguniversal/module-map-ngfactory-loader": "^8.2.6",
+    "core-js": "^3.6.5",
+    "express": "^4.15.2",
+    "mura.js": "^1.0.219",
+    "reflect-metadata": "^0.1.13",
+    "rxjs": "^6.2.2",
+    "rxjs-compat": "^6.3.3",
+    "tslib": "^1.13.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^0.901.6",
+    "@angular/cli": "^9.1.6",
+    "@angular/compiler-cli": "^9.1.7",
+    "@angular/language-service": "^9.1.7",
+    "@types/node": "^12.12.39",
+    "codelyzer": "^5.1.2",
+    "http-server": "^0.12.3",
+    "pre-commit": "^1.2.2",
+    "ts-loader": "^6.2.2",
+    "tslint": "^6.1.2",
+    "typescript": "3.8.3"
+  }
+}
